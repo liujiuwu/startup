@@ -6,6 +6,8 @@ organization := "com.startup"
 
 scalaVersion := "2.9.2"
 
+scanDirectories in Compile := Nil
+
 //resolvers ++= Seq(
 //"snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
 //"releases" at "http://oss.sonatype.org/content/repositories/releases",
@@ -29,9 +31,18 @@ seq(lessSettings:_*)
 
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
-(resourceManaged in (Compile, LessKeys.less))  <<= (sourceDirectory in Compile)(_ / "webapp/css/")
+(sourceDirectory in (Compile, LessKeys.less)) <<= (sourceDirectory in Compile)(_ / "webapp" / "css")
+
+(resourceManaged in (Compile, LessKeys.less)) <<= (sourceDirectory in Compile)(_ / "webapp" / "css")
+
+//(LessKeys.mini in (Compile, LessKeys.less)) := true
 
 (LessKeys.filter in (Compile, LessKeys.less)) := "bootstrap.less"
+
+
+EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
+
+EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE16)
 
 EclipseKeys.withSource := true
 
@@ -46,8 +57,7 @@ libraryDependencies ++= {
     "mysql" 	          %  "mysql-connector-java"   % "5.1.21",
     "org.eclipse.jetty" % "jetty-webapp"        % "8.1.7.v20120910"  % "container,test",
     "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container,test" artifacts Artifact("javax.servlet", "jar", "jar"),
-    "ch.qos.logback"    % "logback-classic"     % "1.0.6",
-    "org.specs2"        %% "specs2"             % "1.12.1"           % "test"
+    "ch.qos.logback"    % "logback-classic"     % "1.0.6"
   )
 }
 

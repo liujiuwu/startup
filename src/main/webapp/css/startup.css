@@ -1,7 +1,82 @@
- body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-		background:#FFF url(../img/bg.gif ) repeat 0 0;
+h1,h2,h3,h4,h5,h6,strong {
+	font-weight: 400;
+	font-size: 100%
 }
-} 0 0;
+
+body {
+	color: #666;
+	padding-top: 60px;
+	padding-bottom: 40px;
+	background: url("../img/bg.png") repeat scroll 0 0 #F5F5F5;
 }
+
+.reg-title {
+	height: 40px;
+	line-height: 40px;
+	margin: 20px 0;
+	padding: 0 5px;
+}
+
+.reg-title h2 {
+	color: #5D6473;
+	float: left;
+	font: 26px Arial, Tahoma, Verdana, "微软雅黑";
+	padding: 0 10px 0 0;
+	text-shadow: 1px 1px 0 #FFFFFF;
+}
+
+.reg-title .reg-step {
+	float: right;
+	line-height: 20px;
+	list-style: decimal inside none;
+	margin-top: 22px;
+}
+
+.reg-title .reg-step li {
+	color: #333333;
+	float: left;
+	margin: 0 8px;
+}
+
+.reg-title .reg-step li.current {
+	border-bottom: 1px solid #3399CC;
+	color: #3399CC;
+}
+
+
+.white-panel, .page-box, .reg-box{
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.06);
+    color: #333333;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+
+.reg-box {
+	padding: 50px 20px;
+}
+
+.reg-box a {
+	color: #3399CC;
+}
+
+.reg-form{
+	padding-top:20px;
+}
+
+.copyright {
+    color: #333333;
+    margin-top: 10px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+
+.box-split {
+	background: url("../img/box-split.png") no-repeat right -80px;
+}
+
