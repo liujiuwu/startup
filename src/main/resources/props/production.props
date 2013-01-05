@@ -1,0 +1,5 @@
+##mysql db setup
+mysql.db.driver=com.mysql.jdbc.Driver
+mysql.db.url=jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/scala-china
+mysql.db.user=liujiuwu
+mysql.db.password=821024

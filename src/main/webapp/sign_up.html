@@ -1,0 +1,48 @@
+<div class="lift:surround?with=default&at=content container">
+	<div class="row">
+		<div class="span8">
+		<div class="well">
+			<form accept-charset="UTF-8" class="form-horizontal " novalidate="novalidate">
+				<div style="margin: 0; padding: 0; display: inline">
+					<input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="4erkUg5plQSf8OhNAD686McdjkrPWYDUksnsN+ATzh8=" />
+				</div>
+
+				<fieldset>
+					<legend>注册新用户</legend>
+					<div class="control-group">
+						<label class="control-label" for="user_email"><abbr title="required">*</abbr> Email</label>
+						<div class="controls">
+							<input class="string email required span5" id="user_email" name="user[email]" placeholder="foo@bar.com" size="50" type="email" value="" />
+							<p class="help-block">保存以后就不可以改了哦！</p>
+						</div>
+					</div>
+					<div class="control-group password optional">
+						<label class="password optional control-label" for="user_password">密码</label>
+						<div class="controls">
+							<input class="password optional" id="user_password" name="user[password]" size="50" type="password" />
+						</div>
+					</div>
+					<div class="control-group password optional">
+						<label class="password optional control-label" for="user_password_confirmation">确认密码</label>
+						<div class="controls">
+							<input class="password optional" id="user_password_confirmation" name="user[password_confirmation]" size="50" type="password" />
+						</div>
+					</div>
+					<div class="form-actions">
+						<input class="btn btn-primary" data-disable-with="正在提交" name="commit" type="submit" value="提交注册信息" />
+					</div>
+				</fieldset>
+			</form>
+			</div>
+		</div>
+		<div class="span4">
+			<div class="well">
+				<h2>已经有帐号了？</h2>
+				<p style="line-height: 20px;">
+					<a href="/account/sign_in">登录</a><br /> <a href="/account/sign_up">注册</a><br /> <a href="/account/password/new">忘记了密码?</a><br />
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+

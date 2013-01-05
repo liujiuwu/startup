@@ -1,0 +1,5 @@
+##mysql db setup
+mysql.db.driver=com.mysql.jdbc.Driver
+mysql.db.url=jdbc:mysql://localhost:3306/startup
+mysql.db.user=root
+mysql.db.password=821024
