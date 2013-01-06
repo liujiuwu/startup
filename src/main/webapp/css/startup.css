@@ -1,5 +1,5 @@
 h1,h2,h3,h4,h5,h6,strong {
-	font-weight: 400;
+	font-weight: 800;
 	font-size: 100%
 }
 
@@ -8,6 +8,9 @@ body {
 	padding-top: 60px;
 	padding-bottom: 40px;
 	background: url("../img/bg.png") repeat scroll 0 0 #F5F5F5;
+	//font-family:"宋体","Arial Narrow",sans-serif;-webkit-text-size-adjust:100%;
+	//font:14px \5b8b\4f53,Arial,sans-serif;
+	font-family:Arial,Tahoma,Verdana,"\5fae\8f6f\96c5\9ed1";
 }
 
 .reg-title {
@@ -20,7 +23,8 @@ body {
 .reg-title h2 {
 	color: #5D6473;
 	float: left;
-	font: 26px Arial, Tahoma, Verdana, "微软雅黑";
+	font-size: 26px;
+	font-weight: 400;
 	padding: 0 10px 0 0;
 	text-shadow: 1px 1px 0 #FFFFFF;
 }

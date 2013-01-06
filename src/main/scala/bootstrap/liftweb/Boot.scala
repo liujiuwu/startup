@@ -14,8 +14,8 @@ import net.liftweb.util.Helpers._
 import net.liftmodules.JQueryModule
 import net.liftweb.http.js.jquery.JQueryArtifacts
 import code.model.User
-
-
+import code.lib.MailHelper
+import code.rest.ApplicationRest
 
 class Boot {
   def boot {
@@ -23,14 +23,19 @@ class Boot {
     DB.defineConnectionManager(DefaultConnectionIdentifier, MyDBVendor)
 
     LiftRules.jsArtifacts = JQueryArtifacts
-    JQueryModule.InitParam.JQuery=JQueryModule.JQuery182
+    JQueryModule.InitParam.JQuery = JQueryModule.JQuery182
     JQueryModule.init()
 
     LiftRules.ajaxStart = Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
     LiftRules.ajaxEnd = Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
-    LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))  
+    LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
     
+    LiftRules.dispatch.append(ApplicationRest) // stateful -- associated with a servlet container session
+    
+    MailHelper.init
+    //MailHelper.sendEMail("liujiuwu@gmail.com", "923933533@qq.com", "liujiuwu@gmail.com", "邮件测试", <b>邮件内容</b>)
+
     Schemifier.schemify(true, Schemifier.infoF _, User)
     LiftRules.setSiteMapFunc(() => MenuInfo.sitemap)
   }
@@ -56,3 +61,5 @@ object MenuInfo {
     adminMenus,
     Menu(Loc("help", ("help" :: Nil) -> true, "帮助")))
 }
+
+
