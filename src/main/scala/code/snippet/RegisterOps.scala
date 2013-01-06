@@ -29,18 +29,20 @@ class RegisterOps {
   private def process() = {
     val user = new User
     user.email(emailVar.is)
-    user.password(passwordVar.is)
+   user.password(passwordVar.is)
     user.validate match {
       case Nil => {
         //user.validated.set(true)
-        user.save
-        MailHelper.sendEMail("liujiuwu@gmail.com", user.email.get, "liujiuwu@gmail.com", "注册创业去邮箱验证", mailContent(user))
+        //user.save
+        //MailHelper.sendEMail("liujiuwu@gmail.com", user.email.get, "liujiuwu@gmail.com", "注册创业去邮箱验证", mailContent(user))
         emailVar.remove()
         passwordVar.remove()
-        S.redirectTo("/")
+
       }
+
       case errors => errors.map(e => formError(e.field.uniqueFieldId.get.replaceAll("users_", ""), e.msg.text))
     }
+    S.redirectTo("/sign_up_end")
   }
 
   private def mailContent(user: User): NodeSeq = {

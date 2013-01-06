@@ -1,54 +1,57 @@
-h1,h2,h3,h4,h5,h6,strong {
-	font-weight: 800;
-	font-size: 100%
+body {
+    color: #666;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    background: url("../img/bg.png") repeat scroll 0 0 #F5F5F5;
+    font-family: Arial, Tahoma, Verdana, "\5fae\8f6f\96c5\9ed1";
 }
 
-body {
-	color: #666;
-	padding-top: 60px;
-	padding-bottom: 40px;
-	background: url("../img/bg.png") repeat scroll 0 0 #F5F5F5;
-	//font-family:"宋体","Arial Narrow",sans-serif;-webkit-text-size-adjust:100%;
-	//font:14px \5b8b\4f53,Arial,sans-serif;
-	font-family:Arial,Tahoma,Verdana,"\5fae\8f6f\96c5\9ed1";
+.web-icon, span {
+    background: url("../img/base_icon.png") no-repeat scroll -999em -999em transparent;
+}
+
+.web-icon-success-s48 {
+    height: 48px;
+    width: 48px;
+    background-position: 0 -64px;
+
 }
 
 .reg-title {
-	height: 40px;
-	line-height: 40px;
-	margin: 20px 0;
-	padding: 0 5px;
+    height: 40px;
+    line-height: 40px;
+    margin: 20px 0;
+    padding: 0;
 }
 
 .reg-title h2 {
-	color: #5D6473;
-	float: left;
-	font-size: 26px;
-	font-weight: 400;
-	padding: 0 10px 0 0;
-	text-shadow: 1px 1px 0 #FFFFFF;
+    color: #5D6473;
+    float: left;
+    font-size: 26px;
+    font-weight: 400;
+    padding: 0 0 0 10px;
+    text-shadow: 1px 1px 0 #FFFFFF;
 }
 
 .reg-title .reg-step {
-	float: right;
-	line-height: 20px;
-	list-style: decimal inside none;
-	margin-top: 22px;
+    float: right;
+    line-height: 20px;
+    list-style: decimal inside none;
+    margin-top: 22px;
 }
 
 .reg-title .reg-step li {
-	color: #333333;
-	float: left;
-	margin: 0 8px;
+    color: #333333;
+    float: left;
+    margin: 0 8px;
 }
 
 .reg-title .reg-step li.current {
-	border-bottom: 1px solid #3399CC;
-	color: #3399CC;
+    border-bottom: 1px solid #3399CC;
+    color: #3399CC;
 }
 
-
-.white-panel, .page-box, .reg-box{
+.white-panel, .page-box, .reg-box {
     background-color: #FFFFFF;
     border: 1px solid #DDDDDD;
     border-radius: 4px 4px 4px 4px;
@@ -58,17 +61,45 @@ body {
     padding: 0;
 }
 
-
 .reg-box {
-	padding: 50px 20px;
+    padding: 30px 0px;
 }
 
 .reg-box a {
-	color: #3399CC;
+    color: #3399CC;
 }
 
-.reg-form{
-	padding-top:20px;
+.reg-box .reg-tip {
+    text-align: center;
+    border-bottom: 1px dotted #CCCCCC;
+    padding-bottom:10px;
+}
+
+.reg-box .reg-tip h2 {
+    color: #333333;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.reg-box .reg-mail {
+    border-bottom: 1px dotted #CCCCCC;
+    padding:20px 0;
+    color:#666;
+}
+
+.reg-box .reg-help {
+    padding-top:10px;
+    color:#666;
+}
+
+.reg-box .reg-help h4{
+    color: #333333;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.reg-form {
+    padding-top: 20px;
 }
 
 .copyright {
@@ -78,9 +109,6 @@ body {
     text-align: center;
 }
 
-
-
 .box-split {
-	background: url("../img/box-split.png") no-repeat right -80px;
+    background: url("../img/box-split.png") no-repeat right -80px;
 }
-
