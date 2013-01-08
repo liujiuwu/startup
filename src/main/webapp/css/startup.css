@@ -1,7 +1,7 @@
 body {
     color: #666;
     padding-top: 60px;
-    padding-bottom: 40px;
+    margin:0;
     background: url("../img/bg.png") repeat scroll 0 0 #F5F5F5;
     font-family: Arial, Tahoma, Verdana, "\5fae\8f6f\96c5\9ed1";
 }
@@ -174,3 +174,5 @@ body {
 
 #login-face{float:left;margin-right:5px;}
 #login-face img{float:left;}
+
+.navbar-inverse .navbar-inner {background: #111;padding:10px 0 0 0;margin:0}
