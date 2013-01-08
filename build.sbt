@@ -61,3 +61,18 @@ libraryDependencies ++= {
   )
 }
 
+
+
+seq(cloudBeesSettings :_*)
+
+//seq(lessSettings:_*)
+
+CloudBees.apiKey := Some("DCCBAA182C43FAA4")
+
+CloudBees.apiSecret := Some("XUAVAOFUQSQGH5XPEUZPB+/SL4XAY0BI8/IP1E2Q4PA=")
+
+CloudBees.username := Some("liujiuwu")
+
+CloudBees.applicationId := Some("liujiuwu/startup")
+
+

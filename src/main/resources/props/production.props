@@ -1,5 +1,13 @@
 ##mysql db setup
 mysql.db.driver=com.mysql.jdbc.Driver
-mysql.db.url=jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/scala-china
-mysql.db.user=liujiuwu
+mysql.db.url=jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/startup
+mysql.db.user=liujiuwu-admin
 mysql.db.password=821024
+
+mail.transport.protocol=smtp
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=587
+mail.smtp.starttls.enable=true
+mail.smtp.auth=true
+mail.user=liujiuwu@gmail.com
+mail.password=liujiuwu2009!@#

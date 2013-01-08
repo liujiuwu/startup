@@ -29,11 +29,12 @@ class RegisterOps {
   private def process() = {
     val user = new User
     user.email(emailVar.is)
-   user.password(passwordVar.is)
+    user.password(passwordVar.is)
     user.validate match {
       case Nil => {
         //user.validated.set(true)
-        //user.save
+        user.name(user.email.split("@")(0))
+        user.save
         //MailHelper.sendEMail("liujiuwu@gmail.com", user.email.get, "liujiuwu@gmail.com", "注册创业去邮箱验证", mailContent(user))
         emailVar.remove()
         passwordVar.remove()
@@ -47,9 +48,11 @@ class RegisterOps {
 
   private def mailContent(user: User): NodeSeq = {
     <p>
-      您于{TimeUtils.format("yyyy年MM月dd日 HH:mm")}申请了邮箱验证。请点击以下链接，即可完成安全验证。
+      您于
+      {TimeUtils.format("yyyy年MM月dd日 HH:mm")}
+      申请了邮箱验证。请点击以下链接，即可完成安全验证。
       <br/>
-       <a href="http://www.qq.com">去验证邮箱，激活创业去注册帐户</a>
+      <a href="http://www.qq.com">去验证邮箱，激活创业去注册帐户</a>
       <br/>
       该链接有效时间为24小时 ， 点击访问后自动失效 ！
       <br/>

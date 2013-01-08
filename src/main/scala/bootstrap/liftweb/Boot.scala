@@ -34,7 +34,7 @@ class Boot {
     //MailHelper.sendEMail("liujiuwu@gmail.com", "923933533@qq.com", "liujiuwu@gmail.com", "邮件测试", <b>邮件内容</b>)
 
     Schemifier.schemify(true, Schemifier.infoF _, User)
-    LiftRules.setSiteMapFunc(() => MenuInfo.sitemap)
+    LiftRules.setSiteMapFunc(() => User.sitemapMutator(MenuInfo.sitemap))
 
     //Rewrite
     LiftRules.statelessRewrite.append {
@@ -47,6 +47,7 @@ class Boot {
 }
 
 object MenuInfo {
+
   import Loc._
 
   val IfUserLoggedIn = If(() => User.loggedIn_?, () => RedirectResponse("/sign_in"))
@@ -59,7 +60,9 @@ object MenuInfo {
     Menu("注册") / "sign_up" >> HiddenSign >> LocGroup("sign"),
     Menu("注册2") / "sign_up_end" >> HiddenSign >> LocGroup("sign"),
     Menu("登录") / "sign_in" >> HiddenSign >> LocGroup("sign"),
-    Menu("项目") / "project" >> HiddenSign >> LocGroup("project"))
+    Menu("项目") / "project" >> HiddenSign >> LocGroup("project"),
+    Menu("用户后台") / "user" / ** >> IfUserLoggedIn >> LocGroup("user"),
+    Menu("管理员后台") / "admin" / ** >> IfAdminLoggedIn >> LocGroup("admin"))
 
   def sitemap() = SiteMap(menus: _*)
 }
