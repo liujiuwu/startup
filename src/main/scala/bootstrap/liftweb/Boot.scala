@@ -42,6 +42,12 @@ class Boot {
         RewriteResponse("sign_in" :: Nil)
       case RewriteRequest(ParsePath("user" :: "sign_out" :: Nil, _, _, _), _, _) =>
         RewriteResponse("user_mgt" :: "logout" :: Nil)
+      case RewriteRequest(ParsePath("project" :: Nil, _, _, _), _, _) =>
+        RewriteResponse("project" :: "index" :: Nil)
+      case RewriteRequest(ParsePath("wenda" :: Nil, _, _, _), _, _) =>
+        RewriteResponse("wenda" :: "index" :: Nil)
+      case RewriteRequest(ParsePath("story" :: Nil, _, _, _), _, _) =>
+        RewriteResponse("story" :: "index" :: Nil)
     }
   }
 }
@@ -60,7 +66,9 @@ object MenuInfo {
     Menu("注册") / "sign_up" >> HiddenSign >> LocGroup("sign"),
     Menu("注册2") / "sign_up_end" >> HiddenSign >> LocGroup("sign"),
     Menu("登录") / "sign_in" >> HiddenSign >> LocGroup("sign"),
-    Menu("项目") / "project" >> HiddenSign >> LocGroup("project"),
+    Menu("项目") / "project" / **,
+    Menu("问答") / "wenda" / **,
+    Menu("日志") / "story" / **,
     Menu("用户后台") / "user" / ** >> IfUserLoggedIn >> LocGroup("user"),
     Menu("管理员后台") / "admin" / ** >> IfAdminLoggedIn >> LocGroup("admin"))
 

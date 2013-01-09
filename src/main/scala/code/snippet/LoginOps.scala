@@ -21,7 +21,7 @@ class LoginOps {
     case Full(user) =>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <div id="login-face"><span class="lift:LoginOps.loginUserFace"></span></div>{user.name}<b class='caret'></b>
+          <div id="login-face">{Gravatar(user.email.is, 16)}</div>{user.name}<b class='caret'></b>
         </a>
         <ul class="dropdown-menu">
           <li>
@@ -56,11 +56,6 @@ class LoginOps {
     "name=email" #> SHtml.text(emailVar.is, emailVar.set(_)) &
       "name=password" #> SHtml.password(passwordVar.is, passwordVar.set(_)) &
       "type=submit" #> SHtml.onSubmitUnit(process)
-  }
-
-  def loginUserFace = User.currentUser match {
-    case Full(user) => Gravatar(user.email.is, 16)
-    case _ => <b></b>
   }
 
   private def process() = {
