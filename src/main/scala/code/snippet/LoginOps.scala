@@ -21,7 +21,9 @@ class LoginOps {
     case Full(user) =>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <div id="login-face">{Gravatar(user.email.is, 16)}</div>{user.name}<b class='caret'></b>
+          <div id="login-face">
+            {Gravatar(user.email.is, 16)}
+          </div>{user.name}<b class='caret'></b>
         </a>
         <ul class="dropdown-menu">
           <li>
@@ -45,10 +47,10 @@ class LoginOps {
       </li>
     case _ =>
       <li class="sign_up">
-        <a href="/sign_up">注册</a>
+        <a href="/sign_up" class="btn-nav">注册</a>
       </li>
         <li class="sign_in">
-          <a href="/sign_in">登录</a>
+          <a href="/sign_in" class="btn-nav">登录</a>
         </li>
   }
 
@@ -66,7 +68,8 @@ class LoginOps {
           if (passwordVar.is.isEmpty) formError("password", "请输入你的密码")
           else {
             if (user.password.match_?(passwordVar.is))
-              User.logUserIn(user, () => if (User.superUser_?) S.redirectTo("/admin/") else S.redirectTo("/user/"))
+            //User.logUserIn(user, () => if (User.superUser_?) S.redirectTo("/admin/") else S.redirectTo("/user/"))
+              User.logUserIn(user, () => S.redirectTo("/user"))
             else
               formError("password", "密码与注册邮箱不匹配，请仔细想想")
           }

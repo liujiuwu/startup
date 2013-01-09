@@ -1,67 +1,55 @@
-<div class="lift:surround?with=default&at=content container">
-    <div class="row">
-        <div class="span12">
-            <div class="reg-login-title">
-                <h2>用户登录</h2>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="span12 reg-login-box">
+<div class="lift:surround?with=default&at=content">
+    <div id="sign-in">
+        <div class="container">
             <div class="row">
-                <div class="span6">
-                    <form class="lift:LoginOps?form=post reg-login-form form-horizontal">
-                        <div id="group_email" class="control-group">
-                            <label class="control-label" for="email">邮箱</label>
-
-                            <div class="controls">
-                                <div class="input-prepend">
-                                    <span class="add-on"><i class="icon-envelope"></i></span>
-                                    <input type="text" id="email" name="email" placeholder="输入常用的邮箱地址"/>
-                                </div>
-                                <span id="error_email" class="help-inline"></span>
-                            </div>
-                        </div>
-                        <div id="group_password" class="control-group">
-                            <label class="control-label" for="password">密码</label>
-
-                            <div class="controls">
-                                <div class="input-prepend">
-                                    <span class="add-on"><i class="icon-lock"></i></span>
-                                    <input type="password" id="password" name="password" placeholder="设置登陆密码"/>
-                                </div>
-                                <span id="error_password" class="help-inline"></span>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <div class="controls">
-                                <button type="submit" class="btn btn-primary">登 录</button>
-                                <br/>
-                                <div class="login-tip"><a href="">忘记密码?</a>  还没有创业去账号？<a href="/sign_up">立即注册</a></div>
-                            </div>
-                        </div>
-                    </form>
-
+                <div class="span12">
+                    <div class="reg-title">
+                        <h2>用户登录</h2>
+                    </div>
                 </div>
-                <div class="span6">
-                    <div>
-                        <h3>快速登录：</h3>
-                        <ul class="">
-                            <li><a href="/user/front/sina?tourl=http%3A%2F%2Fwww.zhouwu.com" a class="app-sina">新浪微博</a>
-                            </li>
-                            <li><a href="/user/front/qq?tourl=http%3A%2F%2Fwww.zhouwu.com" a class="app-qq">QQ</a></li>
-                            <li><a href="/user/front/tqq?tourl=http%3A%2F%2Fwww.zhouwu.com" a class="app-tqq">腾讯微博</a>
-                            </li>
-                            <li><a href="/user/front/douban?tourl=http%3A%2F%2Fwww.zhouwu.com" a
-                                   class="app-douban">豆瓣</a>
-                            </li>
-                            <li><a href="/user/front/renren?tourl=http%3A%2F%2Fwww.zhouwu.com" a
-                                   class="app-renren">人人网</a>
-                            </li>
-                            <li><a href="/user/front/msn?tourl=http%3A%2F%2Fwww.zhouwu.com" a class="app-msn">MSN</a>
-                            </li>
-                        </ul>
+            </div>
+
+            <div class="row">
+                <div class="span12 login-box">
+                    <div class="row">
+                        <div class="span6">
+                            <form class="lift:LoginOps?form=post login-form form-horizontal">
+                                <div id="group_email" class="control-group">
+                                    <label class="control-label" for="email">邮箱</label>
+
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-envelope"></i></span>
+                                            <input type="text" id="email" name="email" placeholder="输入常用的邮箱地址"/>
+                                        </div>
+                                        <span id="error_email" class="help-inline"></span>
+                                    </div>
+                                </div>
+                                <div id="group_password" class="control-group">
+                                    <label class="control-label" for="password">密码</label>
+
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-lock"></i></span>
+                                            <input type="password" id="password" name="password" placeholder="设置登陆密码"/>
+                                        </div>
+                                        <span id="error_password" class="help-inline"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn btn-primary">登 录</button>
+                                        <br/>
+
+                                        <div class="login-tip"><a href="">忘记密码?</a> 还没有创业去账号？<a href="/sign_up">立即注册</a></div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="span6">
+                            <span class='lift:embed?what=_thirdLogin'>Embed the top toolbar here.</span>
+                        </div>
                     </div>
                 </div>
             </div>

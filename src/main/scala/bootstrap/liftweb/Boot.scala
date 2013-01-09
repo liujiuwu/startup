@@ -48,6 +48,8 @@ class Boot {
         RewriteResponse("wenda" :: "index" :: Nil)
       case RewriteRequest(ParsePath("story" :: Nil, _, _, _), _, _) =>
         RewriteResponse("story" :: "index" :: Nil)
+      case RewriteRequest(ParsePath("user" :: Nil, _, _, _), _, _) =>
+        RewriteResponse("user" :: "index" :: Nil)
     }
   }
 }
@@ -69,9 +71,9 @@ object MenuInfo {
     Menu("项目") / "project" / **,
     Menu("问答") / "wenda" / **,
     Menu("日志") / "story" / **,
-    Menu("用户后台") / "user" / ** >> IfUserLoggedIn >> LocGroup("user"),
-    Menu("管理员后台") / "admin" / ** >> IfAdminLoggedIn >> LocGroup("admin"))
-
+    Menu("用户后台") / "user" / ** >> IfUserLoggedIn >> LocGroup("user")
+  // Menu("管理员后台") / "admin" / ** >> IfAdminLoggedIn >> LocGroup("admin"))
+    )
   def sitemap() = SiteMap(menus: _*)
 }
 
