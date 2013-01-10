@@ -68,17 +68,6 @@ object MenuInfo {
   val IfAdminLoggedIn = If(() => User.loggedIn_? && User.superUser_?, () => RedirectResponse("/sign_in"))
   val HiddenSign = Unless(() => User.loggedIn_?, () => RedirectResponse("/user/"))
 
-
-  val divider1 = Menu("divider1") / "divider1"
-  val divider2 = Menu("divider2") / "divider2"
-  val divider3 = Menu("divider3") / "divider3"
-  val hdivider1 = Menu("hdivider1") / "hdvidider1"
-  //nav headers
-  val navHeader1 = Menu.i("NavHeader1") / "navHeader1"
-  val navHeader2 = Menu.i("NavHeader2") / "navHeader2"
-
-  val more = Menu.i("更多") / "more"
-
   val bootstrap210Doc = Menu(Loc("Bootstrap-2.1.0", Link(List("bootstrap-2.1.0"), true, "/bootstrap-2.1.0/index"), S.loc("Bootstrap-2.1.0", Text("Bootstrap-2.1.0"))))
   val bootstrap220Doc = Menu(Loc("Bootstrap-2.2.0", Link(List("bootstrap-2.2.0"), true, "/bootstrap-2.2.0/index"), S.loc("Bootstrap-2.2.0", Text("Bootstrap-2.2.0")), LocGroup("nldemo1")))
   val bootstrap222Doc = Menu(Loc("Bootstrap-2.2.2", Link(List("bootstrap-2.2.2"), true, "/bootstrap-2.2.2/index"), S.loc("Bootstrap-2.2.2", Text("Bootstrap-2.2.2")), LocGroup("nldemo1")))
@@ -95,11 +84,13 @@ object MenuInfo {
     Menu("邮箱验证") / "sign_up_end" >> HiddenSign >> LocGroup("sign"),
     Menu("登录") / "sign_in" >> HiddenSign >> LocGroup("sign"),
 
-    more >> LocGroup("main") >> PlaceHolder submenus(
+    Menu("帮助") / "help" / ** >> IfUserLoggedIn >> LocGroup("help"),
+
+    Menu.i("更多") / "more" >> LocGroup("main") >> PlaceHolder submenus(
       bootstrap210Doc,
       bootstrap220Doc,
       bootstrap222Doc,
-      divider1 >> FoBo.TBLocInfo.Divider,
+      Menu("divider1") / "divider1" >> FoBo.TBLocInfo.Divider,
       foboApiDoc
       ),
 
@@ -110,7 +101,7 @@ object MenuInfo {
     Menu("我的问答") / "user" / "wenda" / ** >> IfUserLoggedIn >> LocGroup("loginUser"),
     Menu("我的日志") / "user" / "story" / ** >> IfUserLoggedIn >> LocGroup("loginUser"),
     Menu("userDivider1") / "userDivider1" >> LocGroup("loginUser") >> FoBo.TBLocInfo.Divider,
-    Menu("帮助") / "help" / ** >> IfUserLoggedIn >> LocGroup("loginUser")
+    Menu("退出") / "user" / "sign_out" >> IfUserLoggedIn >> LocGroup("loginUser")
   )
 
   def sitemap() = SiteMap(menus: _*)

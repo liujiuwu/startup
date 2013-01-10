@@ -1,11 +1,15 @@
 package code.model
 
-import net.liftweb.mapper.{MappedString, MegaProtoUser, MetaMegaProtoUser, CreatedUpdated}
+import net.liftweb.mapper._
 
 class User extends MegaProtoUser[User] with CreatedUpdated {
   def getSingleton = User
 
   object name extends MappedString(this, 20)
+
+  object lastLoginTime extends MappedDateTime(this)
+
+  object loginTime extends MappedDateTime(this)
 
 }
 

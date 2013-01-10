@@ -1,24 +1,35 @@
-<div class="lift:surround?with=user&at=content">
+<div class="lift:surround?with=user_center&at=content">
     <div id="user_home">
         <div class="user-box">
             <div class="row-fluid wrap">
-                <div class="span2">
+                <div id="user-face" class="span2">
                     <div class="avatar">
                         <span class="lift:LoginOps.userFace"></span>
-                        <p>修改头像</p>
+
+                        <p><a href="https://cn.gravatar.com/emails">修改头像</a></p>
                     </div>
                 </div>
-                <div class="span10">
-                    <div class="user-baseInfo">
-                        <p class="user"><strong>水如清 </strong></p>
+                <div id="user-baseInfo" class="lift:UserCenterOps.userBaseInfo span10">
+                    <p class="user"><strong><span id="user_name"></span></strong></p>
 
-                        <p class="safety"><a href="/user/home/mobilebind">手机未绑定</a> <span class="sep">|</span> <a href="/user/home/emailbind">邮箱未绑定</a> <span class="org ml15">为保证您的账户及资金安全，请及时验证邮箱及手机</span></p>
+                    <p class="safety">登录时间：<span id="user_login_time"></span> <span class="sep">|</span> 上次登录时间：<span id="user_last_login_time"></span></p>
 
-                        <p class="account">账户余额：<strong class="org">0</strong> 元 <span class="sep">|</span> 优惠券：<span class="red">0</span> 张</p>
+                    <p class="account">账户余额：<strong class="org">0</strong> 元 <span class="sep">|</span> 优惠券：<span class="red">0</span> 张</p>
 
-                        <p class="trade">交易提醒：<span class="mr10"><a href="/user/order/index?status=unpay">未付款 <em>(0)</em></a></span> <a href="/user/order/index?uncomment=1" class="mr10">待点评 <em>(0)</em></a></p>
-                    </div>
+                    <p class="trade">交易提醒：<span class="mr10"><a href="/user/order/index?status=unpay">未付款 <em>(0)</em></a></span> <a href="/user/order/index?uncomment=1" class="mr10">待点评 <em>(0)</em></a></p>
                 </div>
+            </div>
+        </div>
+
+        <div class="widget-box">
+            <div class="widget-title">
+								<span class="icon">
+									<i class="icon-th-list"></i>
+								</span>
+                <h5>Span12</h5>
+            </div>
+            <div class="widget-content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
         </div>
     </div>

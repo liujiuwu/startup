@@ -1,8 +1,6 @@
 package code.snippet
 
 import code.model.User
-import net.liftweb._
-import net.liftweb.common._
 import net.liftweb.common.{Box, Full, Empty, Failure, ParamFailure}
 import net.liftweb.http._
 import net.liftweb.mapper.By
@@ -10,6 +8,7 @@ import net.liftweb.util.Helpers._
 import scala.xml.Text
 import code.lib.CommonUtils._
 import net.liftmodules.widgets.gravatar.Gravatar
+import net.liftweb.util._
 
 class LoginOps {
 
@@ -18,7 +17,7 @@ class LoginOps {
   private object passwordVar extends RequestVar[String]("821024")
 
   def userFace = User.currentUser match {
-    case Full(user) => Gravatar(user.email.is,80)
+    case Full(user) => Gravatar(user.email.is, 80)
     case _ => Text("")
   }
 
@@ -32,18 +31,15 @@ class LoginOps {
         </a>
         <ul class="dropdown-menu">
           <li>
-            <a href="/user/">我的主页</a>
+            <a href="/user/">用户中心</a>
           </li>{if (User.superUser_?)
           <li>
             <a href="/admin/">后台管理</a>
           </li>}<li>
-          <a href="/user/profile">个人资料设置</a>
+          <a href="/user/profile">账户设置</a>
         </li>
           <li>
-            <a href="/notes">记事本</a>
-          </li>
-          <li>
-            <a href="/user/favorites">我的收藏</a>
+            <a href="/user/favorites">我的关注</a>
           </li>
           <li class="last">
             <a href="/user/sign_out">退出</a>
@@ -72,10 +68,13 @@ class LoginOps {
         case Full(user) => {
           if (passwordVar.is.isEmpty) formError("password", "请输入你的密码")
           else {
-            if (user.password.match_?(passwordVar.is))
-            //User.logUserIn(user, () => if (User.superUser_?) S.redirectTo("/admin/") else S.redirectTo("/user/"))
+            if (user.password.match_?(passwordVar.is)) {
+              //User.logUserIn(user, () => if (User.superUser_?) S.redirectTo("/admin/") else S.redirectTo("/user/"))
+              user.lastLoginTime(user.loginTime)
+              user.loginTime(TimeHelpers.now)
+              user.save()
               User.logUserIn(user, () => S.redirectTo("/user"))
-            else
+            } else
               formError("password", "密码与注册邮箱不匹配，请仔细想想")
           }
         }
