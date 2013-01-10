@@ -17,6 +17,11 @@ class LoginOps {
 
   private object passwordVar extends RequestVar[String]("821024")
 
+  def userFace = User.currentUser match {
+    case Full(user) => Gravatar(user.email.is,80)
+    case _ => Text("")
+  }
+
   def userStatus = User.currentUser match {
     case Full(user) =>
       <li class="dropdown">

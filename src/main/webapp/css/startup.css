@@ -52,7 +52,7 @@ body {
     -ms-transition: all .2s linear;
     -o-transition: all .2s linear;
     transition: all .2s linear;
-    padding:5px 20px;
+    padding: 5px 20px;
 }
 
 .navbar .nav > li > a:hover {
@@ -64,7 +64,7 @@ body {
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
-    padding:5px 20px;
+    padding: 5px 20px;
     -webkit-box-shadow: none;
     box-shadow: none;
     -moz-box-shadow: none;
@@ -317,7 +317,30 @@ body {
     border: 1px solid #DDDDDD;
     border-radius: 4px 4px 4px 4px;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.06);
-    color: #333333;
-    margin-bottom: 40px;
-    padding: 0;
+}
+
+.user-box {
+    background-color: #F9F9F9;
+    margin-bottom: 10px;
+    padding: 4px;
+}
+
+.user-box .wrap {
+    background-color: #FFFFFF;
+
+}
+
+.user-box .avatar {
+    border-right: 1px solid #E7E7E8;
+    display: inline;
+    float: left;
+    margin: 0 -1px 0 10px;
+    overflow: hidden;
+    padding:10px;
+    text-align: center;
+    width: 80px;
+}
+
+.user-box .user-baseInfo{
+    padding:5px;
 }
