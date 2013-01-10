@@ -49,6 +49,14 @@ class HelloWorld {
 
   def ajaxTest(xhtml: NodeSeq): NodeSeq = {
     // bind the view to the functionality
-    bind("ajax", xhtml,"clicker" -> doClicker _)
+    bind("ajax", xhtml, "clicker" -> doClicker _)
+  }
+
+  def ajaxBtn(xhtml: NodeSeq): NodeSeq = {
+    bind("ajax", xhtml, "btn" -> SHtml.ajaxButton("Ajax测试", test _, "class" -> "btn"))
+  }
+
+  def test = {
+    JsCmds.SetHtml("name", <b>liujiuwu</b>)
   }
 }

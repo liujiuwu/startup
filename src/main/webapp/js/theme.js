@@ -12,7 +12,7 @@ $(function () {
             $('.scrolltop').fadeIn();
         } else {
             $('.scrolltop').fadeOut();
-        }        
+        }
     });
 
     // scroll back to top btn
@@ -20,7 +20,7 @@ $(function () {
         $("html, body").animate({ scrollTop: 0 }, 700);
         return false;
     });
-    
+
     // scroll navigation functionality
     $('.scroller').click(function(){
     	var section = $($(this).data("section"));

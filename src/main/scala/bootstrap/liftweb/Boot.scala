@@ -7,11 +7,11 @@ import net.liftweb.mapper.DB
 import net.liftweb.mapper.DefaultConnectionIdentifier
 import net.liftweb.mapper.Schemifier
 import net.liftweb.sitemap._
-import net.liftmodules.JQueryModule
 import net.liftweb.http.js.jquery.JQueryArtifacts
 import code.model.User
 import code.lib.MailHelper
 import code.rest.ApplicationRest
+import net.liftmodules.FoBo
 
 
 class Boot {
@@ -19,9 +19,10 @@ class Boot {
     LiftRules.addToPackages("code")
     DB.defineConnectionManager(DefaultConnectionIdentifier, MyDBVendor)
 
-    LiftRules.jsArtifacts = JQueryArtifacts
-    JQueryModule.InitParam.JQuery = JQueryModule.JQuery182
-    JQueryModule.init()
+    FoBo.InitParam.JQuery = FoBo.JQuery182
+    FoBo.InitParam.ToolKit = FoBo.Bootstrap222
+    FoBo.InitParam.ToolKit = FoBo.FontAwesome200
+    FoBo.init()
 
     LiftRules.ajaxStart = Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
     LiftRules.ajaxEnd = Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
@@ -57,23 +58,61 @@ class Boot {
 object MenuInfo {
 
   import Loc._
+  import scala.xml._
+
+  val MustBeLoggedIn = If(() => User.loggedIn_?, "")
+
+  def userLinkText = User.currentUser.map(_.shortName).openOr("not logged in").toString
 
   val IfUserLoggedIn = If(() => User.loggedIn_?, () => RedirectResponse("/sign_in"))
   val IfAdminLoggedIn = If(() => User.loggedIn_? && User.superUser_?, () => RedirectResponse("/sign_in"))
   val HiddenSign = Unless(() => User.loggedIn_?, () => RedirectResponse("/user/"))
 
 
+  val divider1 = Menu("divider1") / "divider1"
+  val divider2 = Menu("divider2") / "divider2"
+  val divider3 = Menu("divider3") / "divider3"
+  val hdivider1 = Menu("hdivider1") / "hdvidider1"
+  //nav headers
+  val navHeader1 = Menu.i("NavHeader1") / "navHeader1"
+  val navHeader2 = Menu.i("NavHeader2") / "navHeader2"
+
+  val more = Menu.i("更多") / "more"
+
+  val bootstrap210Doc = Menu(Loc("Bootstrap-2.1.0", Link(List("bootstrap-2.1.0"), true, "/bootstrap-2.1.0/index"), S.loc("Bootstrap-2.1.0", Text("Bootstrap-2.1.0"))))
+  val bootstrap220Doc = Menu(Loc("Bootstrap-2.2.0", Link(List("bootstrap-2.2.0"), true, "/bootstrap-2.2.0/index"), S.loc("Bootstrap-2.2.0", Text("Bootstrap-2.2.0")), LocGroup("nldemo1")))
+  val bootstrap222Doc = Menu(Loc("Bootstrap-2.2.2", Link(List("bootstrap-2.2.2"), true, "/bootstrap-2.2.2/index"), S.loc("Bootstrap-2.2.2", Text("Bootstrap-2.2.2")), LocGroup("nldemo1")))
+  val foboApiDoc = Menu(Loc("FoBoAPI", Link(List("foboapi"), true, "/foboapi/#net.liftmodules.FoBo.package"), S.loc("FoBoAPI", Text("FoBo API")), LocGroup("liboTop2", "mdemo2", "nldemo1")))
+
+  val nlHelp = Menu.i("NLHelp") / "helpindex"
   val menus = List(
-    Menu("首页") / "index",
+    Menu("首页") / "index" >> LocGroup("main"),
+    Menu("项目") / "project" / ** >> LocGroup("main"),
+    Menu("问答") / "wenda" / ** >> LocGroup("main"),
+    Menu("日志") / "story" / ** >> LocGroup("main"),
+
     Menu("注册") / "sign_up" >> HiddenSign >> LocGroup("sign"),
-    Menu("注册2") / "sign_up_end" >> HiddenSign >> LocGroup("sign"),
+    Menu("邮箱验证") / "sign_up_end" >> HiddenSign >> LocGroup("sign"),
     Menu("登录") / "sign_in" >> HiddenSign >> LocGroup("sign"),
-    Menu("项目") / "project" / **,
-    Menu("问答") / "wenda" / **,
-    Menu("日志") / "story" / **,
-    Menu("用户后台") / "user" / ** >> IfUserLoggedIn >> LocGroup("user")
-  // Menu("管理员后台") / "admin" / ** >> IfAdminLoggedIn >> LocGroup("admin"))
-    )
+
+    more >> LocGroup("main") >> PlaceHolder submenus(
+      bootstrap210Doc,
+      bootstrap220Doc,
+      bootstrap222Doc,
+      divider1 >> FoBo.TBLocInfo.Divider,
+      foboApiDoc
+      ),
+
+    Menu.i("用户中心") / "userCenterHeader" >> LocGroup("loginUser") >> FoBo.TBLocInfo.NavHeader,
+    Menu("首页") / "user" / "index" >> IfUserLoggedIn >> LocGroup("loginUser"),
+    Menu("账户设置") / "user" / "profile" / ** >> IfUserLoggedIn >> LocGroup("loginUser"),
+    Menu("我的项目") / "user" / "project" / ** >> IfUserLoggedIn >> LocGroup("loginUser"),
+    Menu("我的问答") / "user" / "wenda" / ** >> IfUserLoggedIn >> LocGroup("loginUser"),
+    Menu("我的日志") / "user" / "story" / ** >> IfUserLoggedIn >> LocGroup("loginUser"),
+    Menu("userDivider1") / "userDivider1" >> LocGroup("loginUser") >> FoBo.TBLocInfo.Divider,
+    Menu("帮助") / "help" / ** >> IfUserLoggedIn >> LocGroup("loginUser")
+  )
+
   def sitemap() = SiteMap(menus: _*)
 }
 

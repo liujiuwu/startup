@@ -2,16 +2,24 @@
     <div id="user_menu">
         <div class="container">
             <div class="row">
-                <div class="span3">
-                    <ul class="nav nav-tabs nav-stacked">
-                        <lift:Menu.group group="user" active:class="active">
-                            <li>
-                                <menu:bind/>
-                            </li>
-                        </lift:Menu.group>
-                    </ul>
+                <div class="span2">
+                    <div class="user-center-menu">
+                        <div class="well">
+                            <span data-lift="FoBo.TBNavlist.builder?group=loginUser"></span>
+                           <!-- <ul class="nav nav-list">
+                                <li class="nav-header">用户后台</li>
+                                <li class="active"><a href="#"><i class="icon-home"></i>用户中心</a></li>
+                                <li><a href="#"><i class="icon-user"></i>账户设置</a></li>
+                                <li><a href="#"><i class="icon-th-list"></i>我的项目</a></li>
+                                <li><a href="#"><i class="icon-list-alt"></i>我的问答</a></li>
+                                <li><a href="#"><i class="icon-book"></i>我的日志</a></li>
+                                <li><a href="#"><i class="icon-book"></i>我的关注</a></li>
+                                <li><a href="#"><i class="icon-help"></i>帮助</a></li>
+                            </ul>-->
+                        </div>
+                    </div>
                 </div>
-                <div class="span9">
+                <div class="span10">
                     <div id="content">The main content will get bound here</div>
                 </div>
             </div>

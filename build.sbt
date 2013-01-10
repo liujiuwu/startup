@@ -16,7 +16,8 @@ scanDirectories in Compile := Nil
 //)
 
 resolvers ++= Seq(
-"small nexus" at "http://58.61.152.91:10004/nexus/content/groups/public/"
+"small nexus" at "http://58.61.152.91:10004/nexus/content/groups/public/" ,
+"releases" at "https://oss.sonatype.org/content/repositories/public"
 ) 
 
 
@@ -54,6 +55,7 @@ libraryDependencies ++= {
     //"net.liftweb"       %% "lift-record"        % liftVersion        % "compile",
     "net.liftmodules"   %% "lift-jquery-module" % (liftVersion + "-2.0"),
     "net.liftmodules"   %% "widgets" % (liftVersion + "-1.1"),
+    "net.liftmodules"   %% "fobo" % (liftVersion + "-0.7.10-SNAPSHOT")  withJavadoc() withSources(),
     "mysql" 	          %  "mysql-connector-java"   % "5.1.21",
     "org.eclipse.jetty" % "jetty-webapp"        % "8.1.7.v20120910"  % "container,test",
     "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container,test" artifacts Artifact("javax.servlet", "jar", "jar"),
