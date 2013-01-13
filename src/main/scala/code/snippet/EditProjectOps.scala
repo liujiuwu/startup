@@ -1,34 +1,64 @@
 package code.snippet
 
-import net.liftweb.http.{S, LiftScreen}
+import net.liftweb.common.{Full, Box, Empty}
+import code.model.Project
+import net.liftweb.http.{S, SHtml, RequestVar}
+import net.liftweb.util.Helpers._
+import code.lib.CommonUtils._
+import code.lib.ProjectStatus
 
-/**
- * Created with IntelliJ IDEA.
- * User: jiuwu
- * Date: 13-1-11
- * Time: 上午12:16
- * To change this template use File | Settings | File Templates.
- */
-class EditProjectOps extends LiftScreen{
-  val project = Project.find(By(Project.title, S.param("jobName").open_!)).open_!
-  val projectName = field("项目名称: ", project.title.is, trim)
 
-  def EntoStr(cur:String): Utils.States.Value ={
-    for(i <- 1 to 51){
-      if(cur == Utils.getStateList()(i).toString)
-        return Utils.States(i)
+class EditProjectOps {
+
+  object projectVar extends RequestVar[Project](Project.create)
+
+  def create = {
+    val project = projectVar.is
+    "#hidden" #> SHtml.hidden(() => projectVar(project)) &
+      "name=name" #> SHtml.text(projectVar.is.name.is, projectVar.is.name(_)) &
+      "name=status" #> SHtml.selectObj[ProjectStatus.Value](
+        ProjectStatus.values.toList.map(v => (v, v.toString)),
+        Full(ProjectStatus.running),
+        projectVar.is.status(_)
+      ) &
+      "name=descn" #> SHtml.textarea(projectVar.is.descn.is, projectVar.is.descn(_)) &
+      "type=submit" #> SHtml.onSubmitUnit(processSubmit)
+  }
+
+
+  private def processSubmit() {
+    projectVar.get.validate match {
+      case Nil => {
+        projectVar.get.save
+        S.notice("Project Saved")
+      }
+      case errors => errors.map(e => formError(e.field.uniqueFieldId.get.replaceAll("nodes_", ""), e.msg.text))
     }
-    return null;
   }
-  def PotoStre(cur:String): Utils.Positions.Value={
-    for(i <- 1 to 33){
-      if(cur == Utils.getPositionList()(i).toString)
-        return Utils.Positions(i)
-    }
-    return null;
+
+  def form = {
+    <span id="hidden"></span>
+      <div class="control-group" id="group_name">
+        <label class="control-label" for="name">项目名称</label>
+        <div class="controls">
+          <input id="name" name="name" size="50" type="text"/> <span id="error_name" class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group" id="group_status">
+        <label class="control-label" for="descn">项目状态</label>
+        <div class="controls">
+          <textarea id="status" name="status"></textarea> <span id="error_status" class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group" id="group_descn">
+        <label class="control-label" for="descn">项目描述</label>
+        <div class="controls">
+          <textarea id="descn" name="descn"></textarea> <span id="error_descn" class="help-inline"></span>
+        </div>
+      </div>
+      <div class="form-actions">
+        <input class="btn btn-primary" name="commit" type="submit" value="确定"/>
+      </div>
   }
-  protected def finish() {
-    val save = pre.CreatedUser(User.currentUser).chas(chas.is).city(city.is).companyName(companyName.is).title(title.is).position(PotoStre(position.is.toString)).duration(duration.is).req(req.is).respons(respons.is).location(EntoStr(location.is.toString)).save
-    S.notice("工作已经修改")
-  }
+
 }

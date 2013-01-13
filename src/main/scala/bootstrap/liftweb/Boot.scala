@@ -1,14 +1,12 @@
 package bootstrap.liftweb
 
-import code.model.MyDBVendor
+import code.model.{Project, MyDBVendor, User}
 import net.liftweb.common._
 import net.liftweb.http._
 import net.liftweb.mapper.DB
 import net.liftweb.mapper.DefaultConnectionIdentifier
 import net.liftweb.mapper.Schemifier
 import net.liftweb.sitemap._
-import net.liftweb.http.js.jquery.JQueryArtifacts
-import code.model.User
 import code.lib.MailHelper
 import code.rest.ApplicationRest
 import net.liftmodules.FoBo
@@ -21,7 +19,7 @@ class Boot {
 
     FoBo.InitParam.JQuery = FoBo.JQuery182
     FoBo.InitParam.ToolKit = FoBo.Bootstrap222
-    FoBo.InitParam.ToolKit = FoBo.FontAwesome200
+    FoBo.InitParam.ToolKit = FoBo.FontAwesome300
     FoBo.init()
 
     LiftRules.ajaxStart = Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
@@ -34,7 +32,7 @@ class Boot {
     MailHelper.init
     //MailHelper.sendEMail("liujiuwu@gmail.com", "923933533@qq.com", "liujiuwu@gmail.com", "邮件测试", <b>邮件内容</b>)
 
-    Schemifier.schemify(true, Schemifier.infoF _, User)
+    Schemifier.schemify(true, Schemifier.infoF _, User, Project)
     LiftRules.setSiteMapFunc(() => User.sitemapMutator(MenuInfo.sitemap))
 
     //Rewrite
