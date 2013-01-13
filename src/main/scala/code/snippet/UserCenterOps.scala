@@ -15,7 +15,7 @@ import code.lib.TimeUtils
  */
 class UserCenterOps {
   def userBaseInfo = User.currentUser match {
-    case Full(user) => "#user_name" #> user.name.is & "#user_login_time *" #> TimeUtils.format("yyyy-MM-dd HH:mm", user.loginTime.is) & "#user_last_login_time *" #> TimeUtils.format("yyyy-MM-dd HH:mm",user.lastLoginTime.is)
+    case Full(user) => "#user_name" #> user.name.get & "#user_login_time *" #> TimeUtils.format("yyyy-MM-dd HH:mm", user.loginTime.get) & "#user_last_login_time *" #> TimeUtils.format("yyyy-MM-dd HH:mm", user.lastLoginTime.get) & "#user_signature *" #> user.signature.get
     case _ => Text("")
   }
 }

@@ -12,6 +12,7 @@ object CommonUtils extends App {
   }
 
   def formError(fieldName: String, msg: String) {
+    println(fieldName+"|"+msg)
     S.appendJs(JsCmds.Run("$('#group_%s').removeClass('success,error,warning');$('#group_%1$s').addClass('error');$('#error_%1$s').text('%s')" format (fieldName, msg)))
   }
 

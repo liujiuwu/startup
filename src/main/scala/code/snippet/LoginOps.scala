@@ -70,7 +70,7 @@ class LoginOps {
           else {
             if (user.password.match_?(passwordVar.is)) {
               //User.logUserIn(user, () => if (User.superUser_?) S.redirectTo("/admin/") else S.redirectTo("/user/"))
-              user.lastLoginTime(user.loginTime)
+              user.lastLoginTime(user.loginTime.get)
               user.loginTime(TimeHelpers.now)
               user.save()
               User.logUserIn(user, () => S.redirectTo("/user"))

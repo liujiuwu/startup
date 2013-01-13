@@ -33,7 +33,7 @@ class RegisterOps {
     user.validate match {
       case Nil => {
         //user.validated.set(true)
-        user.name(user.email.split("@")(0))
+        user.name(user.email.get.split("@")(0))
         user.save
         //MailHelper.sendEMail("liujiuwu@gmail.com", user.email.get, "liujiuwu@gmail.com", "注册创业去邮箱验证", mailContent(user))
         emailVar.remove()

@@ -1,7 +1,77 @@
 <div class="lift:surround?with=user_center&at=content">
     <div id="user_home">
-        <div class="user-box">
-            帐户设置
+        <div class="widget-box">
+            <div class="widget-title">
+								<span class="icon">
+									<i class="icon-align-justify"></i>
+								</span>
+                <h5>账户信息</h5>
+            </div>
+            <div class="widget-content nopadding">
+                <form class="lift:EditUserOps.edit?form=post&eager_eval=true table form-horizontal">
+                    <span id="hidden"></span>
+
+                    <div class="control-group" id="group_name">
+                        <label class="control-label" for="name">真实姓名或昵称</label>
+
+                        <div class="controls">
+                            <input id="name" name="name" size="50" type="text"/> <span id="error_name"
+                                                                                       class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group" id="group_gender">
+                        <label class="control-label" for="gender">性别</label>
+
+                        <div class="controls">
+                            <select id="gender" name="gender"></select> <span id="error_gender"
+                                                                              class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group" id="group_location">
+                        <label class="control-label" for="location">所在地</label>
+
+                        <div class="controls">
+                            <select id="location" name="location"></select> <span id="error_location"
+                                                                                  class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group" id="group_signature">
+                        <label class="control-label" for="signature">一句话签名</label>
+
+                        <div class="controls">
+                            <input id="signature" name="signature" size="50" type="text"/> <span id="error_signature"
+                                                                                                 class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group" id="group_introduction">
+                        <label class="control-label" for="introduction">自我介绍</label>
+
+                        <div class="controls">
+                            <textarea id="introduction" name="introduction"></textarea> <span id="error_introduction"
+                                                                                              class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <input class="btn btn-primary" name="commit" type="submit" value="确定"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="widget-box">
+            <div class="widget-title">
+								<span class="icon">
+									<i class="icon-align-justify"></i>
+								</span>
+                <h5>修改密码</h5>
+            </div>
+            <div class="widget-content nopadding">
+                <form class="table form-horizontal">
+                    <div class="form-actions">
+                        <input class="btn btn-primary" name="commit" type="submit" value="确定"/>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

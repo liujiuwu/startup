@@ -5,7 +5,7 @@ import code.model.Project
 import net.liftweb.http.{S, SHtml, RequestVar}
 import net.liftweb.util.Helpers._
 import code.lib.CommonUtils._
-import code.lib.ProjectStatus
+import code.lib.{Location, ProjectStatus}
 
 
 class EditProjectOps {
@@ -21,6 +21,11 @@ class EditProjectOps {
         Full(ProjectStatus.running),
         projectVar.is.status(_)
       ) &
+      "name=location" #> SHtml.selectObj[Location.Value](
+        Location.values.toList.map(v => (v, v.toString)),
+        Full(Location.beijing),
+        projectVar.is.location(_)
+      ) &
       "name=descn" #> SHtml.textarea(projectVar.is.descn.is, projectVar.is.descn(_)) &
       "type=submit" #> SHtml.onSubmitUnit(processSubmit)
   }
@@ -31,8 +36,9 @@ class EditProjectOps {
       case Nil => {
         projectVar.get.save
         S.notice("Project Saved")
+        S.seeOther("/user/project/")
       }
-      case errors => errors.map(e => formError(e.field.uniqueFieldId.get.replaceAll("nodes_", ""), e.msg.text))
+      case errors => errors.map(e => formError(e.field.uniqueFieldId.get.replaceAll(Project.dbTableName + "_", ""), e.msg.text))
     }
   }
 
@@ -45,9 +51,15 @@ class EditProjectOps {
         </div>
       </div>
       <div class="control-group" id="group_status">
-        <label class="control-label" for="descn">项目状态</label>
+        <label class="control-label" for="status">项目状态</label>
         <div class="controls">
           <textarea id="status" name="status"></textarea> <span id="error_status" class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group" id="group_location">
+        <label class="control-label" for="location">所在地</label>
+        <div class="controls">
+          <select id="location" name="location"/> <span id="error_location" class="help-inline"></span>
         </div>
       </div>
       <div class="control-group" id="group_descn">
