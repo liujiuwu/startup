@@ -8,7 +8,7 @@
                 <h5>账户信息</h5>
             </div>
             <div class="widget-content nopadding">
-                <form class="lift:EditUserOps.edit?form=post&eager_eval=true table form-horizontal">
+                <form class="lift:EditUserOps.edit?form=post table form-horizontal">
                     <span id="hidden"></span>
 
                     <div class="control-group" id="group_name">
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div class="widget-box">
+        <!--<div class="widget-box">
             <div class="widget-title">
 								<span class="icon">
 									<i class="icon-align-justify"></i>
@@ -66,13 +66,29 @@
                 <h5>修改密码</h5>
             </div>
             <div class="widget-content nopadding">
-                <form class="table form-horizontal">
+                <form class="lift:EditUserOps.updatePassword?form=post table form-horizontal">
+                    <div class="control-group" id="group_old_password">
+                        <label class="control-label" for="old_password">旧密码</label>
+
+                        <div class="controls">
+                            <input id="old_password" name="old_password" size="50" type="password"/> <span id="error_old_password"
+                                                                                       class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group" id="group_new_password">
+                        <label class="control-label" for="new_password">新密码</label>
+
+                        <div class="controls">
+                            <input id="new_password" name="new_password" size="50" type="password"/> <span id="error_new_password"
+                                                                                                           class="help-inline"></span>
+                        </div>
+                    </div>
                     <div class="form-actions">
                         <input class="btn btn-primary" name="commit" type="submit" value="确定"/>
                     </div>
                 </form>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 
