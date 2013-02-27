@@ -10,4 +10,4 @@ mail.smtp.port=587
 mail.smtp.starttls.enable=true
 mail.smtp.auth=true
 mail.user=liujiuwu@gmail.com
-mail.password=liujiuwu2009!@#
+mail.password=xxxxx
